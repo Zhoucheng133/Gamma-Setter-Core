@@ -16,16 +16,22 @@ pub extern "C" fn set_gamma(gamma: f64) {
             green: [0; 256],
             blue: [0; 256],
         };
+        let exponent = 4f64.powf(gamma); 
 
         for i in 0..256 {
-            let v = ((i as f64 / 255.0).powf(1.0 / gamma) * 65535.0)
+            let val = ((i as f64 / 256.0).powf(exponent) * 65535.0 + 0.5)
                 .clamp(0.0, 65535.0) as u16;
-            ramp.red[i] = v;
-            ramp.green[i] = v;
-            ramp.blue[i] = v;
+            
+            ramp.red[i] = val;
+            ramp.green[i] = val;
+            ramp.blue[i] = val;
         }
 
         let hdc = GetDC(None);
-        let _ = SetDeviceGammaRamp(hdc, &ramp as *const _ as _);
+        if !hdc.is_invalid() {
+            let _ = SetDeviceGammaRamp(hdc, &ramp as *const _ as _);
+            // 修复资源泄漏：释放 DC
+            ReleaseDC(HWND(0), hdc); 
+        }
     }
 }
