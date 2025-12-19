@@ -3,6 +3,7 @@
 ![License](https://img.shields.io/badge/License-MIT-dark_green)
 
 This is the core module of the **[Gamma Setter](https://github.com/Zhoucheng133/Gamma-Setter)** project written in Rust. It contains the core logic and functionality of the application.  
+Inspired by [HotKey-Gamma](https://github.com/wasupandceacar/HotKey-Gamma).  
 This module supports **Windows** only.
 
 ## Generate Dynamic Library
