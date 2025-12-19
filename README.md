@@ -2,7 +2,8 @@
 
 ![License](https://img.shields.io/badge/License-MIT-dark_green)
 
-This is the core module of the **[Gamma Setter](https://github.com/Zhoucheng133/Gamma-Setter)** project written in Rust. It contains the core logic and functionality of the application.
+This is the core module of the **[Gamma Setter](https://github.com/Zhoucheng133/Gamma-Setter)** project written in Rust. It contains the core logic and functionality of the application.  
+This module supports **Windows** only.
 
 ## Generate Dynamic Library
 
