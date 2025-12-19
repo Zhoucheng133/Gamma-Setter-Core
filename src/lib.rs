@@ -28,10 +28,6 @@ pub extern "C" fn set_gamma(gamma: f64) {
         }
 
         let hdc = GetDC(None);
-        if !hdc.is_invalid() {
-            let _ = SetDeviceGammaRamp(hdc, &ramp as *const _ as _);
-            // 修复资源泄漏：释放 DC
-            ReleaseDC(HWND(0), hdc); 
-        }
+        let _ =SetDeviceGammaRamp(hdc, &ramp as *const _ as _);
     }
 }
